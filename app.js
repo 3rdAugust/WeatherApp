@@ -1,6 +1,7 @@
 
 const yargs = require('yargs');
 const geocode = require('./geocode/geocode');
+const promise = require('./Async/promise-2');
 const weather = require('./weather/weather');
 const argv = yargs
     .options({
@@ -17,7 +18,7 @@ const argv = yargs
 
 console.log(argv);
 
-geocode.geoCodeAddress(argv.address, (errorMessage, results) => {
+geocode.geocodeAddress(argv.address, (errorMessage, results) => {
     if (errorMessage) {
         console.log(errorMessage);
     }

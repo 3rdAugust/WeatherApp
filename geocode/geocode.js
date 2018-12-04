@@ -1,6 +1,6 @@
 const request = require('request');
 
-const geoCodeAddress = (address, callback) => {
+const geocodeAddress = (address, callback) => {
     let encodedAddress = encodeURIComponent(address);
 
     request({
@@ -25,7 +25,7 @@ const geoCodeAddress = (address, callback) => {
 };
 
 module.exports = {
-    geoCodeAddress
+    geocodeAddress
 }
 
 // forecast api f0fcb43c9c9d354594fea4cc356a87a0

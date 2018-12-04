@@ -1,12 +1,23 @@
-const somePromises = new Promise((resolve, reject) => {
-    setTimeout(() => {
-        reject('OK');
-    }, 500);
+const asyncAdd = (a, b) => {
+    return new Promise((resolve, reject) => {
+        setTimeout(() => {
+            if (typeof a === 'number' && typeof b === 'number')
+                resolve(a + b);
+            else {
+                reject('Argument must be numbers');
+            }
+        }, 1000);
+    })
+}
 
-});
-
-somePromises.then((message) => {
-    console.log('Success', message);
-}, (errorMessage) => {
-  console.log('Error', errorMessage);
-})
+asyncAdd(5, 3)
+    .then((result) => {
+        console.log('Result: ', result);
+        return asyncAdd(result, 10);
+    })
+    .then((result) => {
+        console.log('Result 2: ', result);
+    })
+    .catch((errorMessage) => {
+      console.log('Error: ', errorMessage);
+    })
